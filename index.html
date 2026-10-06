@@ -2,272 +2,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Zenvora - Online Store</title>
+<title>Zenvora - Online Store</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
 
-    nav {
-      background: #111;
-      color: white;
-      padding: 18px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+/* NAVBAR */
+nav {
+  background: #111;
+  color: white;
+  padding: 16px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    nav h2 {
-      margin: 0;
-      letter-spacing: 1px;
-    }
+nav h2 {
+  margin: 0;
+  letter-spacing: 2px;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: bold;
+}
 
-    .cart-btn {
-      background: #d4af37;
-      color: #111;
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
+nav a:hover {
+  color: #d4af37;
+}
 
-    .hero {
-      text-align: center;
-      padding: 90px 20px;
-      background: linear-gradient(135deg, #111, #333);
-      color: white;
-    }
+.cart-btn {
+  background: #d4af37;
+  color: #111;
+  padding: 9px 13px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 10px;
+}
 
-    .hero h1 {
-      font-size: 55px;
-      margin: 0 0 15px;
-    }
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #050505, #333);
+  color: white;
+}
 
-    .hero p {
-      font-size: 20px;
-      margin-bottom: 25px;
-    }
+.hero h1 {
+  font-size: 60px;
+  margin: 0 0 15px;
+  letter-spacing: 5px;
+}
 
-    .btn {
-      background: #d4af37;
-      color: #111;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
 
-    .section {
-      padding: 50px 20px;
-      text-align: center;
-    }
+.btn {
+  background: #d4af37;
+  color: #111;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-    .section h2 {
-      font-size: 35px;
-      margin-bottom: 30px;
-    }
+.btn:hover {
+  background: #111;
+  color: #d4af37;
+  transform: translateY(-2px);
+}
 
-    .search {
-      width: 90%;
-      max-width: 600px;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      margin-bottom: 35px;
-    }
+/* SECTIONS */
+.section {
+  padding: 55px 20px;
+  text-align: center;
+}
 
-    .category {
-      margin-bottom: 60px;
-    }
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
 
-    .category h3 {
-      font-size: 28px;
-      margin-bottom: 25px;
-    }
+/* SEARCH */
+.search {
+  width: 90%;
+  max-width: 650px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-bottom: 45px;
+  outline: none;
+}
 
-    .product-box {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+.search:focus {
+  border-color: #d4af37;
+}
 
-    .product {
-      background: white;
-      width: 240px;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px #ddd;
-      transition: 0.3s;
-    }
+/* CATEGORY */
+.category {
+  margin-bottom: 65px;
+}
 
-    .product:hover {
-      transform: translateY(-5px);
-    }
+.category h3 {
+  font-size: 28px;
+  margin-bottom: 28px;
+  display: inline-block;
+  border-bottom: 3px solid #d4af37;
+  padding-bottom: 8px;
+}
 
-    .product img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
+/* PRODUCTS */
+.product-box {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
 
-    .product h4 {
-      font-size: 19px;
-      margin: 12px 0 5px;
-    }
+.product {
+  background: white;
+  width: 240px;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px #ddd;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
 
-    .price {
-      color: #b18b00;
-      font-size: 19px;
-      font-weight: bold;
-      margin: 10px;
-    }
+.product:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px #ccc;
+}
 
-    .cart-section,
-    .checkout {
-      background: white;
-      max-width: 750px;
-      margin: 40px auto;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px #ddd;
-    }
+.product::before {
+  content: "NEW";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #111;
+  color: white;
+  padding: 5px 9px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: bold;
+  z-index: 2;
+}
 
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #ddd;
-      padding: 15px 0;
-      gap: 15px;
-    }
+.product img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: 0.4s;
+}
 
-    .quantity button {
-      padding: 5px 10px;
-      margin: 0 3px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+.product:hover img {
+  transform: scale(1.05);
+}
 
-    .checkout input,
-    .checkout textarea {
-      width: 100%;
-      padding: 13px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-    }
+.product h4 {
+  font-size: 19px;
+  margin: 14px 0 6px;
+}
 
-    .checkout textarea {
-      height: 100px;
-      resize: none;
-    }
+.price {
+  color: #b18b00;
+  font-size: 19px;
+  font-weight: bold;
+  margin: 10px;
+}
 
-    .total {
-      font-size: 24px;
-      font-weight: bold;
-      margin: 25px 0;
-    }
+.product .btn {
+  width: 100%;
+}
 
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 30px;
-      margin-top: 50px;
-    }
+/* CART */
+.cart-section,
+.checkout {
+  background: white;
+  max-width: 800px;
+  margin: 45px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px #ddd;
+}
 
-    @media (max-width: 700px) {
+.cart-section h2,
+.checkout h2 {
+  margin-top: 0;
+}
 
-      nav {
-        flex-direction: column;
-        gap: 15px;
-      }
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+  gap: 15px;
+}
 
-      nav a {
-        margin: 5px;
-      }
+.quantity button {
+  padding: 5px 10px;
+  margin: 0 3px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #eee;
+}
 
-      .hero h1 {
-        font-size: 38px;
-      }
+.quantity button:hover {
+  background: #d4af37;
+}
 
-      .product {
-        width: 90%;
-        max-width: 320px;
-      }
-    }
-  </style>
+.total {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 25px 0;
+}
+
+/* CHECKOUT */
+.checkout input,
+.checkout textarea {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+.checkout input:focus,
+.checkout textarea:focus {
+  border-color: #d4af37;
+}
+
+.checkout textarea {
+  height: 110px;
+  resize: none;
+}
+
+.checkout .btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* CONTACT */
+#contact {
+  background: #eee;
+}
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 35px;
+  margin-top: 50px;
+}
+
+footer h2 {
+  color: #d4af37;
+  letter-spacing: 2px;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+  nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav div {
+    text-align: center;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .cart-btn {
+    margin: 5px;
+  }
+
+  .hero {
+    padding: 70px 15px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .product {
+    width: 90%;
+    max-width: 320px;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
 </head>
 
 <body>
-
 
 <!-- NAVIGATION -->
 
 <nav>
 
-  <h2>🛍️ ZENVORA</h2>
+<h2>🛍️ ZENVORA</h2>
 
-  <div>
+<div>
+<a href="#home">Home</a>
+<a href="#shop">Shop</a>
+<a href="#checkout">Order</a>
+<a href="#contact">Contact</a>
 
-    <a href="#home">Home</a>
+<span class="cart-btn">
+🛒 Cart:
+<span id="cartCount">0</span>
+</span>
 
-    <a href="#shop">Shop</a>
-
-    <a href="#checkout">Order</a>
-
-    <a href="#contact">Contact</a>
-
-    <span class="cart-btn">
-      🛒 Cart:
-      <span id="cartCount">0</span>
-    </span>
-
-  </div>
+</div>
 
 </nav>
 
 
-<!-- HOME -->
+<!-- HERO -->
 
 <section class="hero" id="home">
 
-  <h1>ZENVORA</h1>
+<h1>ZENVORA</h1>
 
-  <p>
-    Fashion • Style • Accessories • Everything You Love
-  </p>
+<p>
+Fashion • Style • Accessories • Everything You Love
+</p>
 
-  <a href="#shop">
-    <button class="btn">
-      Shop Now
-    </button>
-  </a>
+<a href="#shop">
+<button class="btn">Shop Now</button>
+</a>
 
 </section>
 
@@ -276,635 +382,345 @@
 
 <section class="section" id="shop">
 
-  <h2>Our Store</h2>
-
-  <input
-    type="text"
-    id="search"
-    class="search"
-    placeholder="🔎 Search products..."
-    onkeyup="searchProducts()"
-  >
-
-
-  <!-- SHIRTS -->
-
-  <div class="category">
-
-    <h3>👕 Shirts</h3>
-
-    <div class="product-box">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=500&q=80">
-        <h4>Classic White Shirt</h4>
-        <p class="price">Rs. 2,499</p>
-        <button class="btn" onclick="addToCart('Classic White Shirt',2499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=500&q=80">
-        <h4>Black Formal Shirt</h4>
-        <p class="price">Rs. 2,799</p>
-        <button class="btn" onclick="addToCart('Black Formal Shirt',2799)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1626497764746-6dc36546b388?auto=format&fit=crop&w=500&q=80">
-        <h4>Blue Casual Shirt</h4>
-        <p class="price">Rs. 2,299</p>
-        <button class="btn" onclick="addToCart('Blue Casual Shirt',2299)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1610652492500-ded49ceeb378?auto=format&fit=crop&w=500&q=80">
-        <h4>Premium Grey Shirt</h4>
-        <p class="price">Rs. 3,199</p>
-        <button class="btn" onclick="addToCart('Premium Grey Shirt',3199)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=500&q=80">
-        <h4>Green Casual Shirt</h4>
-        <p class="price">Rs. 2,599</p>
-        <button class="btn" onclick="addToCart('Green Casual Shirt',2599)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=500&q=80">
-        <h4>Premium Cotton Shirt</h4>
-        <p class="price">Rs. 2,899</p>
-        <button class="btn" onclick="addToCart('Premium Cotton Shirt',2899)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1563630423918-b58f07336ac9?auto=format&fit=crop&w=500&q=80">
-        <h4>Stylish Printed Shirt</h4>
-        <p class="price">Rs. 2,699</p>
-        <button class="btn" onclick="addToCart('Stylish Printed Shirt',2699)">Add to Cart</button>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- PANTS -->
-
-  <div class="category">
-
-    <h3>👖 Pants</h3>
-
-    <div class="product-box">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=500&q=80">
-        <h4>Black Jeans</h4>
-        <p class="price">Rs. 3,299</p>
-        <button class="btn" onclick="addToCart('Black Jeans',3299)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=500&q=80">
-        <h4>Blue Jeans</h4>
-        <p class="price">Rs. 3,499</p>
-        <button class="btn" onclick="addToCart('Blue Jeans',3499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1624378441864-6eda7f47e19d?auto=format&fit=crop&w=500&q=80">
-        <h4>Grey Pants</h4>
-        <p class="price">Rs. 2,999</p>
-        <button class="btn" onclick="addToCart('Grey Pants',2999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=500&q=80">
-        <h4>Casual Trousers</h4>
-        <p class="price">Rs. 2,799</p>
-        <button class="btn" onclick="addToCart('Casual Trousers',2799)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1517451330947-7809dead78d5?auto=format&fit=crop&w=500&q=80">
-        <h4>Classic Chinos</h4>
-        <p class="price">Rs. 2,899</p>
-        <button class="btn" onclick="addToCart('Classic Chinos',2899)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1555689502-c4b22d76c56f?auto=format&fit=crop&w=500&q=80">
-        <h4>Dark Denim</h4>
-        <p class="price">Rs. 3,599</p>
-        <button class="btn" onclick="addToCart('Dark Denim',3599)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1604176354204-9268737828e4?auto=format&fit=crop&w=500&q=80">
-        <h4>Comfort Pants</h4>
-        <p class="price">Rs. 2,499</p>
-        <button class="btn" onclick="addToCart('Comfort Pants',2499)">Add to Cart</button>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- SHOES -->
-
-  <div class="category">
-
-    <h3>👟 Shoes</h3>
-
-    <div class="product-box">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80">
-        <h4>Red Sneakers</h4>
-        <p class="price">Rs. 4,999</p>
-        <button class="btn" onclick="addToCart('Red Sneakers',4999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=500&q=80">
-        <h4>Classic Sneakers</h4>
-        <p class="price">Rs. 4,499</p>
-        <button class="btn" onclick="addToCart('Classic Sneakers',4499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=500&q=80">
-        <h4>Sport Shoes</h4>
-        <p class="price">Rs. 5,499</p>
-        <button class="btn" onclick="addToCart('Sport Shoes',5499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=500&q=80">
-        <h4>White Sneakers</h4>
-        <p class="price">Rs. 4,799</p>
-        <button class="btn" onclick="addToCart('White Sneakers',4799)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=500&q=80">
-        <h4>Casual Shoes</h4>
-        <p class="price">Rs. 3,999</p>
-        <button class="btn" onclick="addToCart('Casual Shoes',3999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?auto=format&fit=crop&w=500&q=80">
-        <h4>Running Shoes</h4>
-        <p class="price">Rs. 5,999</p>
-        <button class="btn" onclick="addToCart('Running Shoes',5999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=500&q=80">
-        <h4>Premium Trainers</h4>
-        <p class="price">Rs. 6,499</p>
-        <button class="btn" onclick="addToCart('Premium Trainers',6499)">Add to Cart</button>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- WATCHES -->
-
-  <div class="category">
-
-    <h3>⌚ Watches</h3>
-
-    <div class="product-box">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80">
-        <h4>Classic Watch</h4>
-        <p class="price">Rs. 2,999</p>
-        <button class="btn" onclick="addToCart('Classic Watch',2999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=500&q=80">
-        <h4>Luxury Watch</h4>
-        <p class="price">Rs. 5,999</p>
-        <button class="btn" onclick="addToCart('Luxury Watch',5999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=500&q=80">
-        <h4>Premium Silver Watch</h4>
-        <p class="price">Rs. 6,499</p>
-        <button class="btn" onclick="addToCart('Premium Silver Watch',6499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=500&q=80">
-        <h4>Black Steel Watch</h4>
-        <p class="price">Rs. 4,999</p>
-        <button class="btn" onclick="addToCart('Black Steel Watch',4999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&fit=crop&w=500&q=80">
-        <h4>Leather Watch</h4>
-        <p class="price">Rs. 3,999</p>
-        <button class="btn" onclick="addToCart('Leather Watch',3999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1526045431048-f857369baa09?auto=format&fit=crop&w=500&q=80">
-        <h4>Gold Style Watch</h4>
-        <p class="price">Rs. 7,499</p>
-        <button class="btn" onclick="addToCart('Gold Style Watch',7499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&w=500&q=80">
-        <h4>Modern Watch</h4>
-        <p class="price">Rs. 4,499</p>
-        <button class="btn" onclick="addToCart('Modern Watch',4499)">Add to Cart</button>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- CAPS -->
-
-  <div class="category">
-
-    <h3>🧢 Caps</h3>
-
-    <div class="product-box">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=500&q=80">
-        <h4>Classic Black Cap</h4>
-        <p class="price">Rs. 999</p>
-        <button class="btn" onclick="addToCart('Classic Black Cap',999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=500&q=80">
-        <h4>Sport Cap</h4>
-        <p class="price">Rs. 1,199</p>
-        <button class="btn" onclick="addToCart('Sport Cap',1199)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=500&q=80">
-        <h4>Premium Cap</h4>
-        <p class="price">Rs. 1,499</p>
-        <button class="btn" onclick="addToCart('Premium Cap',1499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1556306535-38febf6782e7?auto=format&fit=crop&w=500&q=80">
-        <h4>White Cap</h4>
-        <p class="price">Rs. 1,099</p>
-        <button class="btn" onclick="addToCart('White Cap',1099)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?auto=format&fit=crop&w=500&q=80">
-        <h4>Street Cap</h4>
-        <p class="price">Rs. 1,299</p>
-        <button class="btn" onclick="addToCart('Street Cap',1299)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1587982722510-8a9e7d7c2c7e?auto=format&fit=crop&w=500&q=80">
-        <h4>Fashion Cap</h4>
-        <p class="price">Rs. 1,399</p>
-        <button class="btn" onclick="addToCart('Fashion Cap',1399)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?auto=format&fit=crop&w=500&q=80">
-        <h4>Urban Cap</h4>
-        <p class="price">Rs. 1,199</p>
-        <button class="btn" onclick="addToCart('Urban Cap',1199)">Add to Cart</button>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- BAGS -->
-
-  <div class="category">
-
-    <h3>🎒 Bags</h3>
-
-    <div class="product-box">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80">
-        <h4>Travel Backpack</h4>
-        <p class="price">Rs. 3,499</p>
-        <button class="btn" onclick="addToCart('Travel Backpack',3499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=80">
-        <h4>Leather Bag</h4>
-        <p class="price">Rs. 4,999</p>
-        <button class="btn" onclick="addToCart('Leather Bag',4999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80">
-        <h4>Office Bag</h4>
-        <p class="price">Rs. 3,999</p>
-        <button class="btn" onclick="addToCart('Office Bag',3999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1581605405669-fcdf81165afa?auto=format&fit=crop&w=500&q=80">
-        <h4>School Backpack</h4>
-        <p class="price">Rs. 2,999</p>
-        <button class="btn" onclick="addToCart('School Backpack',2999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=80">
-        <h4>Mini Bag</h4>
-        <p class="price">Rs. 2,499</p>
-        <button class="btn" onclick="addToCart('Mini Bag',2499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=500&q=80">
-        <h4>Fashion Bag</h4>
-        <p class="price">Rs. 3,299</p>
-        <button class="btn" onclick="addToCart('Fashion Bag',3299)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=500&q=80">
-        <h4>Premium Backpack</h4>
-        <p class="price">Rs. 4,499</p>
-        <button class="btn" onclick="addToCart('Premium Backpack',4499)">Add to Cart</button>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- SUNGLASSES -->
-
-  <div class="category">
-
-    <h3>🕶️ Sunglasses</h3>
-
-    <div class="product-box">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80">
-        <h4>Classic Sunglasses</h4>
-        <p class="price">Rs. 1,999</p>
-        <button class="btn" onclick="addToCart('Classic Sunglasses',1999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1511499767150-0c7f7f4f7d7d?auto=format&fit=crop&w=500&q=80">
-        <h4>Black Shades</h4>
-        <p class="price">Rs. 2,299</p>
-        <button class="btn" onclick="addToCart('Black Shades',2299)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=500&q=80">
-        <h4>Fashion Shades</h4>
-        <p class="price">Rs. 2,499</p>
-        <button class="btn" onclick="addToCart('Fashion Shades',2499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=500&q=80">
-        <h4>Premium Glasses</h4>
-        <p class="price">Rs. 2,999</p>
-        <button class="btn" onclick="addToCart('Premium Glasses',2999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80">
-        <h4>Modern Shades</h4>
-        <p class="price">Rs. 2,199</p>
-        <button class="btn" onclick="addToCart('Modern Shades',2199)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?auto=format&fit=crop&w=500&q=80">
-        <h4>Round Sunglasses</h4>
-        <p class="price">Rs. 1,899</p>
-        <button class="btn" onclick="addToCart('Round Sunglasses',1899)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1556306535-0e0e6d7d3d0c?auto=format&fit=crop&w=500&q=80">
-        <h4>Luxury Shades</h4>
-        <p class="price">Rs. 3,499</p>
-        <button class="btn" onclick="addToCart('Luxury Shades',3499)">Add to Cart</button>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- JACKETS -->
-
-  <div class="category">
-
-    <h3>🧥 Jackets</h3>
-
-    <div class="product-box">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=500&q=80">
-        <h4>Black Jacket</h4>
-        <p class="price">Rs. 5,999</p>
-        <button class="btn" onclick="addToCart('Black Jacket',5999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1520975958225-6f61a4a7e2e1?auto=format&fit=crop&w=500&q=80">
-        <h4>Denim Jacket</h4>
-        <p class="price">Rs. 4,999</p>
-        <button class="btn" onclick="addToCart('Denim Jacket',4999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?auto=format&fit=crop&w=500&q=80">
-        <h4>Winter Jacket</h4>
-        <p class="price">Rs. 6,499</p>
-        <button class="btn" onclick="addToCart('Winter Jacket',6499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1548883354-94bcfe321cbb?auto=format&fit=crop&w=500&q=80">
-        <h4>Leather Jacket</h4>
-        <p class="price">Rs. 8,999</p>
-        <button class="btn" onclick="addToCart('Leather Jacket',8999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=500&q=80">
-        <h4>Casual Jacket</h4>
-        <p class="price">Rs. 4,499</p>
-        <button class="btn" onclick="addToCart('Casual Jacket',4499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1516826957135-700dedea698c?auto=format&fit=crop&w=500&q=80">
-        <h4>Hooded Jacket</h4>
-        <p class="price">Rs. 5,499</p>
-        <button class="btn" onclick="addToCart('Hooded Jacket',5499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=80">
-        <h4>Premium Jacket</h4>
-        <p class="price">Rs. 7,499</p>
-        <button class="btn" onclick="addToCart('Premium Jacket',7499)">Add to Cart</button>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- FORMAL SHOES -->
-
-  <div class="category">
-
-    <h3>👞 Formal Shoes</h3>
-
-    <div class="product-box">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=500&q=80">
-        <h4>Black Formal Shoes</h4>
-        <p class="price">Rs. 4,999</p>
-        <button class="btn" onclick="addToCart('Black Formal Shoes',4999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=500&q=80">
-        <h4>Brown Formal Shoes</h4>
-        <p class="price">Rs. 5,499</p>
-        <button class="btn" onclick="addToCart('Brown Formal Shoes',5499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=500&q=80">
-        <h4>Classic Leather Shoes</h4>
-        <p class="price">Rs. 5,999</p>
-        <button class="btn" onclick="addToCart('Classic Leather Shoes',5999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=500&q=80">
-        <h4>Office Shoes</h4>
-        <p class="price">Rs. 4,499</p>
-        <button class="btn" onclick="addToCart('Office Shoes',4499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=80">
-        <h4>Premium Brown Shoes</h4>
-        <p class="price">Rs. 6,499</p>
-        <button class="btn" onclick="addToCart('Premium Brown Shoes',6499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1582897085656-c636d006a246?auto=format&fit=crop&w=500&q=80">
-        <h4>Business Shoes</h4>
-        <p class="price">Rs. 5,799</p>
-        <button class="btn" onclick="addToCart('Business Shoes',5799)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=500&q=80">
-        <h4>Luxury Formal Shoes</h4>
-        <p class="price">Rs. 7,499</p>
-        <button class="btn" onclick="addToCart('Luxury Formal Shoes',7499)">Add to Cart</button>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- T-SHIRTS -->
-
-  <div class="category">
-
-    <h3>👕 T-Shirts</h3>
-
-    <div class="product-box">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80">
-        <h4>White T-Shirt</h4>
-        <p class="price">Rs. 1,499</p>
-        <button class="btn" onclick="addToCart('White T-Shirt',1499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=500&q=80">
-        <h4>Black T-Shirt</h4>
-        <p class="price">Rs. 1,499</p>
-        <button class="btn" onclick="addToCart('Black T-Shirt',1499)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=500&q=80">
-        <h4>Blue T-Shirt</h4>
-        <p class="price">Rs. 1,599</p>
-        <button class="btn" onclick="addToCart('Blue T-Shirt',1599)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1583743814966-8936f37f384c?auto=format&fit=crop&w=500&q=80">
-        <h4>Premium T-Shirt</h4>
-        <p class="price">Rs. 1,899</p>
-        <button class="btn" onclick="addToCart('Premium T-Shirt',1899)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=500&q=80">
-        <h4>Graphic T-Shirt</h4>
-        <p class="price">Rs. 1,799</p>
-        <button class="btn" onclick="addToCart('Graphic T-Shirt',1799)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=500&q=80">
-        <h4>Oversized T-Shirt</h4>
-        <p class="price">Rs. 1,999</p>
-        <button class="btn" onclick="addToCart('Oversized T-Shirt',1999)">Add to Cart</button>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1627225924765-552d49cf47ad?auto=format&fit=crop&w=500&q=80">
-        <h4>Streetwear T-Shirt</h4>
-        <p class="price">Rs. 1,899</p>
-        <button class="btn" onclick="addToCart('Streetwear T-Shirt',1899)">Add to Cart</button>
-      </div>
-
-    </div>
-
-  </div>
+<h2>🛍️ Our Store</h2>
+
+<input
+type="text"
+id="search"
+class="search"
+placeholder="🔎 Search products..."
+onkeyup="searchProducts()"
+>
+
+
+<!-- SHIRTS -->
+
+<div class="category">
+
+<h3>👕 Shirts</h3>
+
+<div class="product-box">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=500&q=80">
+<h4>Classic White Shirt</h4>
+<p class="price">Rs. 2,499</p>
+<button class="btn" onclick="addToCart('Classic White Shirt',2499)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=500&q=80">
+<h4>Black Formal Shirt</h4>
+<p class="price">Rs. 2,799</p>
+<button class="btn" onclick="addToCart('Black Formal Shirt',2799)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1626497764746-6dc36546b388?auto=format&fit=crop&w=500&q=80">
+<h4>Blue Casual Shirt</h4>
+<p class="price">Rs. 2,299</p>
+<button class="btn" onclick="addToCart('Blue Casual Shirt',2299)">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- PANTS -->
+
+<div class="category">
+
+<h3>👖 Pants</h3>
+
+<div class="product-box">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=500&q=80">
+<h4>Black Jeans</h4>
+<p class="price">Rs. 3,299</p>
+<button class="btn" onclick="addToCart('Black Jeans',3299)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=500&q=80">
+<h4>Blue Jeans</h4>
+<p class="price">Rs. 3,499</p>
+<button class="btn" onclick="addToCart('Blue Jeans',3499)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1624378441864-6eda7f47e19d?auto=format&fit=crop&w=500&q=80">
+<h4>Grey Pants</h4>
+<p class="price">Rs. 2,999</p>
+<button class="btn" onclick="addToCart('Grey Pants',2999)">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- SHOES -->
+
+<div class="category">
+
+<h3>👟 Shoes</h3>
+
+<div class="product-box">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80">
+<h4>Red Sneakers</h4>
+<p class="price">Rs. 4,999</p>
+<button class="btn" onclick="addToCart('Red Sneakers',4999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=500&q=80">
+<h4>Classic Sneakers</h4>
+<p class="price">Rs. 4,499</p>
+<button class="btn" onclick="addToCart('Classic Sneakers',4499)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=500&q=80">
+<h4>Sport Shoes</h4>
+<p class="price">Rs. 5,499</p>
+<button class="btn" onclick="addToCart('Sport Shoes',5499)">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- WATCHES -->
+
+<div class="category">
+
+<h3>⌚ Watches</h3>
+
+<div class="product-box">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80">
+<h4>Classic Watch</h4>
+<p class="price">Rs. 2,999</p>
+<button class="btn" onclick="addToCart('Classic Watch',2999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=500&q=80">
+<h4>Luxury Watch</h4>
+<p class="price">Rs. 5,999</p>
+<button class="btn" onclick="addToCart('Luxury Watch',5999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=500&q=80">
+<h4>Premium Silver Watch</h4>
+<p class="price">Rs. 6,499</p>
+<button class="btn" onclick="addToCart('Premium Silver Watch',6499)">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- BAGS -->
+
+<div class="category">
+
+<h3>🎒 Bags</h3>
+
+<div class="product-box">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80">
+<h4>Travel Backpack</h4>
+<p class="price">Rs. 3,499</p>
+<button class="btn" onclick="addToCart('Travel Backpack',3499)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=80">
+<h4>Leather Bag</h4>
+<p class="price">Rs. 4,999</p>
+<button class="btn" onclick="addToCart('Leather Bag',4999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80">
+<h4>Office Bag</h4>
+<p class="price">Rs. 3,999</p>
+<button class="btn" onclick="addToCart('Office Bag',3999)">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- CAPS -->
+
+<div class="category">
+
+<h3>🧢 Caps</h3>
+
+<div class="product-box">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=500&q=80">
+<h4>Classic Black Cap</h4>
+<p class="price">Rs. 999</p>
+<button class="btn" onclick="addToCart('Classic Black Cap',999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=500&q=80">
+<h4>Sport Cap</h4>
+<p class="price">Rs. 1,199</p>
+<button class="btn" onclick="addToCart('Sport Cap',1199)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=500&q=80">
+<h4>Premium Cap</h4>
+<p class="price">Rs. 1,499</p>
+<button class="btn" onclick="addToCart('Premium Cap',1499)">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- SUNGLASSES -->
+
+<div class="category">
+
+<h3>🕶️ Sunglasses</h3>
+
+<div class="product-box">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80">
+<h4>Classic Sunglasses</h4>
+<p class="price">Rs. 1,999</p>
+<button class="btn" onclick="addToCart('Classic Sunglasses',1999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=500&q=80">
+<h4>Fashion Shades</h4>
+<p class="price">Rs. 2,499</p>
+<button class="btn" onclick="addToCart('Fashion Shades',2499)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?auto=format&fit=crop&w=500&q=80">
+<h4>Premium Glasses</h4>
+<p class="price">Rs. 2,999</p>
+<button class="btn" onclick="addToCart('Premium Glasses',2999)">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- JACKETS -->
+
+<div class="category">
+
+<h3>🧥 Jackets</h3>
+
+<div class="product-box">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=500&q=80">
+<h4>Black Jacket</h4>
+<p class="price">Rs. 5,999</p>
+<button class="btn" onclick="addToCart('Black Jacket',5999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1520975958225-6f61a4a7e2e1?auto=format&fit=crop&w=500&q=80">
+<h4>Denim Jacket</h4>
+<p class="price">Rs. 4,999</p>
+<button class="btn" onclick="addToCart('Denim Jacket',4999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?auto=format&fit=crop&w=500&q=80">
+<h4>Winter Jacket</h4>
+<p class="price">Rs. 6,499</p>
+<button class="btn" onclick="addToCart('Winter Jacket',6499)">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- FORMAL SHOES -->
+
+<div class="category">
+
+<h3>👞 Formal Shoes</h3>
+
+<div class="product-box">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=500&q=80">
+<h4>Black Formal Shoes</h4>
+<p class="price">Rs. 4,999</p>
+<button class="btn" onclick="addToCart('Black Formal Shoes',4999)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=500&q=80">
+<h4>Brown Formal Shoes</h4>
+<p class="price">Rs. 5,499</p>
+<button class="btn" onclick="addToCart('Brown Formal Shoes',5499)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=500&q=80">
+<h4>Classic Leather Shoes</h4>
+<p class="price">Rs. 5,999</p>
+<button class="btn" onclick="addToCart('Classic Leather Shoes',5999)">Add to Cart</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- T-SHIRTS -->
+
+<div class="category">
+
+<h3>👕 T-Shirts</h3>
+
+<div class="product-box">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80">
+<h4>White T-Shirt</h4>
+<p class="price">Rs. 1,499</p>
+<button class="btn" onclick="addToCart('White T-Shirt',1499)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=500&q=80">
+<h4>Black T-Shirt</h4>
+<p class="price">Rs. 1,499</p>
+<button class="btn" onclick="addToCart('Black T-Shirt',1499)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=500&q=80">
+<h4>Blue T-Shirt</h4>
+<p class="price">Rs. 1,599</p>
+<button class="btn" onclick="addToCart('Blue T-Shirt',1599)">Add to Cart</button>
+</div>
+
+</div>
+</div>
 
 </section>
 
@@ -913,15 +729,15 @@
 
 <section class="cart-section">
 
-  <h2>🛒 Your Cart</h2>
+<h2>🛒 Your Cart</h2>
 
-  <div id="cartItems">
-    <p>Your cart is empty.</p>
-  </div>
+<div id="cartItems">
+<p>Your cart is empty.</p>
+</div>
 
-  <div class="total">
-    Total: Rs. <span id="cartTotal">0</span>
-  </div>
+<div class="total">
+Total: Rs. <span id="cartTotal">0</span>
+</div>
 
 </section>
 
@@ -930,28 +746,28 @@
 
 <section class="checkout" id="checkout">
 
-  <h2>📦 Place Your Order</h2>
+<h2>📦 Place Your Order</h2>
 
-  <input
-    type="text"
-    id="customerName"
-    placeholder="Your Name"
-  >
+<input
+type="text"
+id="customerName"
+placeholder="Your Name"
+>
 
-  <input
-    type="tel"
-    id="customerPhone"
-    placeholder="Phone Number"
-  >
+<input
+type="tel"
+id="customerPhone"
+placeholder="Phone Number"
+>
 
-  <textarea
-    id="customerAddress"
-    placeholder="Delivery Address"
-  ></textarea>
+<textarea
+id="customerAddress"
+placeholder="Delivery Address"
+></textarea>
 
-  <button class="btn" onclick="sendOrder()">
-    Order on WhatsApp
-  </button>
+<button class="btn" onclick="sendOrder()">
+Order on WhatsApp
+</button>
 
 </section>
 
@@ -960,13 +776,11 @@
 
 <section class="section" id="contact">
 
-  <h2>📞 Contact Zenvora</h2>
+<h2>📞 Contact Zenvora</h2>
 
-  <p>Call: 0349 0453242</p>
-
-  <p>WhatsApp: 0340 9231597</p>
-
-  <p>Email: azlanmahi71@gmail.com</p>
+<p>Call: 0349 0453242</p>
+<p>WhatsApp: 0340 9231597</p>
+<p>Email: azlanmahi71@gmail.com</p>
 
 </section>
 
@@ -975,320 +789,283 @@
 
 <footer>
 
-  <h2>ZENVORA</h2>
+<h2>ZENVORA</h2>
 
-  <p>
-    Fashion • Style • Accessories
-  </p>
+<p>
+Fashion • Style • Accessories
+</p>
 
-  <p>
-    © 2026 Zenvora. All Rights Reserved.
-  </p>
+<p>
+© 2026 Zenvora. All Rights Reserved.
+</p>
 
 </footer>
 
 
 <script>
 
-  let cart = [];
+let cart = [];
 
 
-  function addToCart(name, price) {
+/* ADD TO CART */
 
-    let existing =
-      cart.find(item => item.name === name);
+function addToCart(name, price) {
 
+let existing = cart.find(item => item.name === name);
 
-    if (existing) {
+if (existing) {
 
-      existing.quantity++;
+existing.quantity++;
 
-    } else {
+} else {
 
-      cart.push({
-        name: name,
-        price: price,
-        quantity: 1
-      });
+cart.push({
+name: name,
+price: price,
+quantity: 1
+});
 
-    }
+}
 
+updateCart();
 
-    updateCart();
+}
 
-  }
 
+/* UPDATE CART */
 
-  function updateCart() {
+function updateCart() {
 
-    let cartItems =
-      document.getElementById("cartItems");
+let cartItems = document.getElementById("cartItems");
+let cartCount = document.getElementById("cartCount");
+let cartTotal = document.getElementById("cartTotal");
 
-    let cartCount =
-      document.getElementById("cartCount");
+cartItems.innerHTML = "";
 
-    let cartTotal =
-      document.getElementById("cartTotal");
+let total = 0;
+let count = 0;
 
 
-    cartItems.innerHTML = "";
+cart.forEach(function(item, index) {
 
+let itemTotal = item.price * item.quantity;
 
-    let total = 0;
+total += itemTotal;
+count += item.quantity;
 
-    let count = 0;
 
+cartItems.innerHTML += `
 
-    cart.forEach(function(item, index) {
+<div class="cart-item">
 
-      let itemTotal =
-        item.price * item.quantity;
+<div>
+<strong>${item.name}</strong>
+<br>
+Rs. ${item.price}
+</div>
 
+<div class="quantity">
 
-      total += itemTotal;
+<button onclick="changeQuantity(${index}, -1)">−</button>
 
-      count += item.quantity;
+${item.quantity}
 
+<button onclick="changeQuantity(${index}, 1)">+</button>
 
-      cartItems.innerHTML += `
+</div>
 
-        <div class="cart-item">
+<div>
+Rs. ${itemTotal}
+</div>
 
-          <div>
+<button
+class="btn"
+onclick="removeItem(${index})">
+Remove
+</button>
 
-            <strong>${item.name}</strong>
+</div>
 
-            <br>
+`;
 
-            Rs. ${item.price}
+});
 
-          </div>
 
+if (cart.length === 0) {
 
-          <div class="quantity">
+cartItems.innerHTML = "<p>Your cart is empty.</p>";
 
-            <button onclick="changeQuantity(${index}, -1)">
-              −
-            </button>
+}
 
-            ${item.quantity}
+cartCount.innerText = count;
+cartTotal.innerText = total;
 
-            <button onclick="changeQuantity(${index}, 1)">
-              +
-            </button>
+}
 
-          </div>
 
+/* CHANGE QUANTITY */
 
-          <div>
-            Rs. ${itemTotal}
-          </div>
+function changeQuantity(index, amount) {
 
+cart[index].quantity += amount;
 
-          <button
-            class="btn"
-            onclick="removeItem(${index})"
-          >
-            Remove
-          </button>
+if (cart[index].quantity <= 0) {
 
-        </div>
+cart.splice(index, 1);
 
-      `;
+}
 
-    });
+updateCart();
 
+}
 
-    if (cart.length === 0) {
 
-      cartItems.innerHTML =
-        "<p>Your cart is empty.</p>";
+/* REMOVE */
 
-    }
+function removeItem(index) {
 
+cart.splice(index, 1);
 
-    cartCount.innerText = count;
+updateCart();
 
-    cartTotal.innerText = total;
+}
 
-  }
 
+/* SEARCH */
 
-  function changeQuantity(index, amount) {
+function searchProducts() {
 
-    cart[index].quantity += amount;
+let input = document
+.getElementById("search")
+.value
+.toLowerCase();
 
+let products = document.querySelectorAll(".product");
 
-    if (cart[index].quantity <= 0) {
+products.forEach(function(product) {
 
-      cart.splice(index, 1);
+let name = product
+.querySelector("h4")
+.innerText
+.toLowerCase();
 
-    }
+if (name.includes(input)) {
 
+product.style.display = "block";
 
-    updateCart();
+} else {
 
-  }
+product.style.display = "none";
 
+}
 
-  function removeItem(index) {
+});
 
-    cart.splice(index, 1);
+}
 
-    updateCart();
 
-  }
+/* WHATSAPP ORDER */
 
+function sendOrder() {
 
-  function searchProducts() {
+if (cart.length === 0) {
 
-    let input =
-      document
-      .getElementById("search")
-      .value
-      .toLowerCase();
+alert("Please add a product to your cart first.");
 
+return;
 
-    let products =
-      document.querySelectorAll(".product");
+}
 
+let name = document
+.getElementById("customerName")
+.value
+.trim();
 
-    products.forEach(function(product) {
+let phone = document
+.getElementById("customerPhone")
+.value
+.trim();
 
-      let name =
-        product
-        .querySelector("h4")
-        .innerText
-        .toLowerCase();
+let address = document
+.getElementById("customerAddress")
+.value
+.trim();
 
 
-      if (name.includes(input)) {
+if (
+name === "" ||
+phone === "" ||
+address === ""
+) {
 
-        product.style.display = "block";
+alert("Please fill in your name, phone and address.");
 
-      } else {
+return;
 
-        product.style.display = "none";
+}
 
-      }
 
-    });
+let message =
+"🛍️ ZENVORA ORDER%0A%0A";
 
-  }
+message +=
+"👤 Name: " + encodeURIComponent(name) + "%0A";
 
+message +=
+"📱 Phone: " + encodeURIComponent(phone) + "%0A";
 
-  function sendOrder() {
+message +=
+"🏠 Address: " + encodeURIComponent(address) + "%0A%0A";
 
-    if (cart.length === 0) {
+message +=
+"📦 PRODUCTS:%0A";
 
-      alert(
-        "Please add a product to your cart first."
-      );
 
-      return;
+let total = 0;
 
-    }
 
+cart.forEach(function(item) {
 
-    let name =
-      document
-      .getElementById("customerName")
-      .value;
+let itemTotal = item.price * item.quantity;
 
+message +=
+"• " +
+encodeURIComponent(item.name) +
+" x" +
+item.quantity +
+" = Rs. " +
+itemTotal +
+"%0A";
 
-    let phone =
-      document
-      .getElementById("customerPhone")
-      .value;
+total += itemTotal;
 
+});
 
-    let address =
-      document
-      .getElementById("customerAddress")
-      .value;
 
+message +=
+"%0A💰 TOTAL: Rs. " +
+total;
 
-    if (
-      name === "" ||
-      phone === "" ||
-      address === ""
-    ) {
 
-      alert(
-        "Please fill in your name, phone and address."
-      );
+/* YOUR WHATSAPP NUMBER */
 
-      return;
+let whatsappNumber =
+"923409231597";
 
-    }
 
+let whatsappURL =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+message;
 
-    let message =
-      "🛍️ ZENVORA ORDER%0A%0A";
 
+window.open(
+whatsappURL,
+"_blank"
+);
 
-    message +=
-      "👤 Name: " + name + "%0A";
-
-
-    message +=
-      "📱 Phone: " + phone + "%0A";
-
-
-    message +=
-      "🏠 Address: " + address + "%0A%0A";
-
-
-    message +=
-      "📦 PRODUCTS:%0A";
-
-
-    let total = 0;
-
-
-    cart.forEach(function(item) {
-
-      let itemTotal =
-        item.price * item.quantity;
-
-
-      message +=
-        "• " +
-        item.name +
-        " x" +
-        item.quantity +
-        " = Rs. " +
-        itemTotal +
-        "%0A";
-
-
-      total += itemTotal;
-
-    });
-
-
-    message +=
-      "%0A💰 TOTAL: Rs. " +
-      total;
-
-
-    let whatsappNumber =
-      "923409231597";
-
-
-    let whatsappURL =
-      "https://wa.me/" +
-      whatsappNumber +
-      "?text=" +
-      message;
-
-
-    window.open(
-      whatsappURL,
-      "_blank"
-    );
-
-  }
+}
 
 </script>
 
